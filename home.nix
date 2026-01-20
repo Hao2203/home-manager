@@ -35,14 +35,13 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     nixfmt
-    zsh
     neovim
-    starship
     yazi
     pnpm
     ripgrep
     fd
     tree-sitter
+    git
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -105,4 +104,5 @@
   };
 
   programs.starship.enable = true;
+  programs.bottom.enable = true;
 }
