@@ -41,7 +41,8 @@
     ripgrep
     fd
     tree-sitter
-    git
+    neofetch
+    tree
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -82,6 +83,10 @@
     EDITOR = "nvim";
   };
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -110,4 +115,13 @@
 
   programs.starship.enable = true;
   programs.bottom.enable = true;
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "hao";
+        email = "hao@hao.com";
+      };
+    };
+  };
 }
