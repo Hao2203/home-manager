@@ -92,6 +92,11 @@
     syntaxHighlighting.enable = true;
 
     initContent = ''
+      # Nix profile initialization
+      if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+        source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      fi
+
       y() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
         yazi "$@" --cwd-file="$tmp"
