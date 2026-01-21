@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -35,6 +35,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     nixfmt
+    nil
     neovim
     yazi
     pnpm
