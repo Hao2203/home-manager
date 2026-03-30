@@ -42,12 +42,11 @@
     ripgrep
     fd
     tree-sitter
-    neofetch
+    fastfetch
     tree
-    gcc
-    gnumake
     nodejs
     python3
+    perf
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,7 +84,10 @@
   home.sessionVariables = {
     RUSTUP_DIST_SERVER = "https://rsproxy.cn";
     RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
-    EDITOR = "nvim";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    DUCKDB_LIB_DIR = "$PWD/libduckdb";
+    DUCKDB_INCLUDE_DIR = "$DUCKDB_LIB_DIR";
+    LD_FALLBACK_LIBRARY_PATH = "$DUCKDB_LIB_DIR";
   };
 
   home.sessionPath = [
@@ -112,6 +114,12 @@
         fi
         rm -f -- "$tmp"
       }
+
+      export DUCKDB_LIB_DIR=$HOME/libduckdb
+      export DUCKDB_INCLUDE_DIR=$DUCKDB_LIB_DIR
+      export LD_LIBRARY_PATH=$DUCKDB_LIB_DIR
+
+      source ~/.profile
     '';
   };
 
