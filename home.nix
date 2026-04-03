@@ -123,6 +123,17 @@
     '';
   };
 
+  programs.jujutsu = {
+    enable = true;
+
+    settings = {
+      user = {
+        name = "Hao2203";
+        email = "101515368+Hao2203@users.noreply.github.com";
+      };
+    };
+  };
+
   programs.starship.enable = true;
   programs.bottom.enable = true;
   programs.git = {
