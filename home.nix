@@ -97,6 +97,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.zellij.enable = true;
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
