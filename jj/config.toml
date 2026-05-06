@@ -1,15 +1,3 @@
 [user]
 email = "101515368+Hao2203@users.noreply.github.com"
 name = "Hao2203"
-
-[ui]
-merge-editor = "nvim"
-diff-editor = "nvim"
-
-[merge-tools.nvim]
-program = "nvim"
-merge-args = ["-d", "$base", "$left", "$right", "-c", "wincmd w"]
-
-[diff-tools.nvim]
-program = "nvim"
-diff-args = ["-d", "$left", "$right"]
