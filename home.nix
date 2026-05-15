@@ -89,6 +89,7 @@
     DUCKDB_LIB_DIR = "$PWD/libduckdb";
     DUCKDB_INCLUDE_DIR = "$DUCKDB_LIB_DIR";
     LD_FALLBACK_LIBRARY_PATH = "$DUCKDB_LIB_DIR";
+    BUN_INSTALL = "$HOME/.bun";
   };
 
   home.sessionPath = [
