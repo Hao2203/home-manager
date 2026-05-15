@@ -45,6 +45,7 @@
     fastfetch
     tree
     nodejs
+    bun
     python3
     perf
   ];
