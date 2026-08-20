@@ -1,5 +1,36 @@
 { pkgs, ... }:
 
+let
+  bun-canary = pkgs.stdenv.mkDerivation {
+    pname = "bun";
+    version = "canary";
+
+    src = pkgs.fetchurl {
+      url = "https://github.com/oven-sh/bun/releases/download/canary/bun-linux-x64.zip";
+      hash = "sha256-IuBdxbqPX+o1evXTN9JTgTsCOEsQCfJgU2pX/d4b+Oc=";
+    };
+
+    nativeBuildInputs = [
+      pkgs.unzip
+    ];
+
+    unpackPhase = ''
+      unzip "$src"
+    '';
+
+    installPhase = ''
+      mkdir -p "$out/bin"
+      cp bun-linux-x64/bun "$out/bin/bun"
+      chmod +x "$out/bin/bun"
+    '';
+
+    meta = {
+      description = "Bun JavaScript runtime (Canary)";
+      homepage = "https://bun.sh";
+      mainProgram = "bun";
+    };
+  };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -14,6 +45,8 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
+
+  nixpkgs.config.allowUnfree = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -45,9 +78,11 @@
     fastfetch
     tree
     nodejs
-    bun
+    bun-canary
+    claude-code
     python3
     perf
+    dig
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -90,6 +125,8 @@
     DUCKDB_INCLUDE_DIR = "$DUCKDB_LIB_DIR";
     LD_FALLBACK_LIBRARY_PATH = "$DUCKDB_LIB_DIR";
     BUN_INSTALL = "$HOME/.bun";
+    LIBGL_ALWAYS_SOFTWARE="1";
+    WRY_USE_HTTPS_SCHEME="false";
   };
 
   home.sessionPath = [
