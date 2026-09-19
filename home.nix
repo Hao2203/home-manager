@@ -38,6 +38,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     nixfmt
+    nixd
     nil
     neovim
     yazi
@@ -53,6 +54,7 @@
     python3
     perf
     dig
+    cloudflared
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -102,6 +104,7 @@
   home.sessionPath = [
     "$HOME/.cargo/bin"
     "$HOME/.bun/bin"
+    "$HOME/.local/share/pnpm/bin"
   ];
 
   # Let Home Manager install and manage itself.
